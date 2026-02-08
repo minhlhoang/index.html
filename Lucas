@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14/2 này đi chơi với mình nhé!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #d63384; margin-bottom: 20px; }
+
+        .gif_container img {
+            width: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 60px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #yesBtn:hover { transform: scale(1.1); background-color: #ff758f; }
+
+        #noBtn {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div class="gif_container">
+            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJmNnNqZzR3YmcxbzZ4am9yNnNqZzR3YmcxbzZ4am9yNnNqZzR3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif" alt="Cute cat">
+        </div>
+        
+        <h1 id="question">14/2 này đi ăn với mình nha? ❤️</h1>
+        <p id="subtext">Nếu thoát ra hoặc không chọn thì coi như đồng ý nha!</p>
+
+        <div class="buttons">
+            <button id="yesBtn">Đồng ý luôn!</button>
+            <button id="noBtn">Khônggg</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const question = document.getElementById('question');
+        const mainGif = document.getElementById('mainGif');
+
+        // Hiệu ứng nút "Không" chạy mất khi di chuột vào hoặc chạm vào
+        const moveButton = () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+            noBtn.style.position = 'fixed'; // Để nó chạy khắp màn hình
+        };
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Khi bấm "Có"
+        yesBtn.addEventListener('click', () => {
+            question.innerHTML = "Biết ngay mà! Chốt kèo 14/2 nhé! 🥰";
+            mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmwwNnNqZzR3YmcxbzZ4am9yNnNqZzR3YmcxbzZ4am9yNnNqZzR3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif";
+            noBtn.style.display = 'none';
+            document.getElementById('subtext').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
